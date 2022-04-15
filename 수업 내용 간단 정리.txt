@@ -1,3 +1,4 @@
+
 $ lsb_release
 buster -> bullseye
 
@@ -32,3 +33,22 @@ $ git clone 사용
 $ sudo apt install filezilla -y --> 리눅스에서 파일질라 설치
 
 
+
+0415
+1) gTTS(Text to Speech)
+2) STT
+
+voice service
+{
+1. google assistant
+2. amazon alexa
+3. apple shiri
+}
+
+$ aplay(audio play) -l
+--> 연결 가능한 스피커 리스트 검색
+
+speaker card 1: device 0:
+
+$ arecord(audio record) -l
+--> 연결 가능한 마이크 검색
