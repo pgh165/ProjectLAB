@@ -13,7 +13,8 @@ def speak(text):
     tts = gTTS(lang='ko', text=text ) #ko')
     filename='voice.mp3' 
     tts.save(filename) 
-    playsound.playsound(filename) 
+    playsound.playsound(filename, True)
+    os.remove(filename) 
 
 #teachable machine으로 훈련된 인공신경망 모델 로드
 model = load_model('C:/Users/Home/Desktop/Coding/prolab_embedded-main/embedded/keras_model.h5')
