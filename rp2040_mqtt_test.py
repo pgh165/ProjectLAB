@@ -1,5 +1,5 @@
 import network,time
-from simple import MQTTClient #导入MQTT板块
+from simple import MQTTClient 
 from machine import I2C,Pin,Timer
 from lsm6dsox import LSM6DSOX
 
@@ -7,13 +7,13 @@ from machine import Pin, I2C
 lsm = LSM6DSOX(I2C(0, scl=Pin(13), sda=Pin(12)))
 
 def WIFI_Connect():
-    wlan = network.WLAN(network.STA_IF) #STA模式
-    wlan.active(True)                   #激活接口
-    start_time=time.time()              #记录时间做超时判断
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)                  
+    start_time=time.time()              
 
     if not wlan.isconnected():
         print('connecting to network...')
-        wlan.connect('olleh_WiFi_37D2', '0000009850') #输入WIFI账号密码
+        wlan.connect('olleh_WiFi_37D2', '0000009850') 
         
     if wlan.isconnected():
         print('network information:', wlan.ifconfig())
@@ -32,6 +32,5 @@ if WIFI_Connect():
     client = MQTTClient(CLIENT_ID, SERVER, PORT, keepalive=30)
     client.connect()
 
-    #开启RTOS定时器，编号为-1,周期1000ms，执行socket通信接收任务
     tim = Timer(-1)
     tim.init(period=1000, mode=Timer.PERIODIC,callback=MQTT_Send)
